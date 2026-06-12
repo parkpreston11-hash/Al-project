@@ -10,7 +10,7 @@ A full-stack premium real estate + loan officer website for a dual-licensed Real
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
 - Required env: `DATABASE_URL` — Postgres connection string
-- Optional env: `ADMIN_PASSWORD` — admin dashboard password (default: `admin123`)
+- Optional env: `ADMIN_PASSWORD` — admin dashboard password (default: `LOANS`)
 
 ## Stack
 

@@ -14,7 +14,7 @@ import {
   GetAdminStatsResponse,
 } from "@workspace/api-zod";
 
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? "admin123";
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? "LOANS";
 const ADMIN_TOKEN = "realty-admin-token-2024";
 
 function requireAdmin(req: Request, res: Response, next: NextFunction): void {
