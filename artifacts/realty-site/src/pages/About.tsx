@@ -90,7 +90,7 @@ export default function About() {
                 <h3 className="text-xl font-bold text-primary mb-3">Real Estate Experience</h3>
                 <ul className="space-y-2 text-muted-foreground text-sm">
                   {[
-                    "Licensed Realtor since 1994",
+                    "Licensed Realtor since 2009",
                     "55+ properties sold throughout California",
                     "Buyer & seller representation",
                     "Relocation specialist",
@@ -113,7 +113,7 @@ export default function About() {
                 <h3 className="text-xl font-bold text-primary mb-3">Loan Officer Experience</h3>
                 <ul className="space-y-2 text-muted-foreground text-sm">
                   {[
-                    "NMLS licensed Loan Officer",
+                    "Licensed Loan Officer since 1995",
                     "FHA, VA, Conventional, Jumbo",
                     "First-time buyer programs",
                     "Refinance guidance",
