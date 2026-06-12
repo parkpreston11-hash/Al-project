@@ -30,7 +30,9 @@ function serialize<T>(data: T): T {
   return JSON.parse(JSON.stringify(data)) as T;
 }
 
-const ListingBody = insertListingSchema;
+const ListingBody = insertListingSchema.partial({ shortDescription: true }).extend({
+  shortDescription: insertListingSchema.shape.shortDescription.optional().default(""),
+});
 const ListingUpdateBody = insertListingSchema.partial();
 
 const router: IRouter = Router();

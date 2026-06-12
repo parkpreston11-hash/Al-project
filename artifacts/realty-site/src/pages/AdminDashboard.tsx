@@ -59,7 +59,7 @@ const listingSchema = z.object({
   baths: z.coerce.number().positive("Baths must be a positive number"),
   sqft: z.coerce.number().int().positive("Sqft must be a positive number"),
   description: z.string().min(1, "Description is required"),
-  shortDescription: z.string().min(1, "Short description is required"),
+  shortDescription: z.string().optional().default(""),
   soldDescription: z.string().optional(),
   imageUrl: z.string().min(1, "Image URL is required"),
   imagesRaw: z.string().optional(),
