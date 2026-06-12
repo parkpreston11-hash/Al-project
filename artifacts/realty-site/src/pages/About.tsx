@@ -90,7 +90,7 @@ export default function About() {
                 <h3 className="text-xl font-bold text-primary mb-3">Real Estate Experience</h3>
                 <ul className="space-y-2 text-muted-foreground text-sm">
                   {[
-                    "Licensed Realtor since 2013",
+                    "Licensed Realtor since 1994",
                     "55+ properties sold throughout California",
                     "Buyer & seller representation",
                     "Relocation specialist",

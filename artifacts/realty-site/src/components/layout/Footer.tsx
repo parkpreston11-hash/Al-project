@@ -14,7 +14,7 @@ export function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="font-serif font-bold text-xl leading-none tracking-tight text-white">
-                  Eleanor & Co.
+                  Go Big Al Williams
                 </span>
                 <span className="text-[10px] uppercase tracking-widest text-white/70">
                   Real Estate & Finance
@@ -73,7 +73,7 @@ export function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-primary-foreground/50">
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
-            <p>&copy; {new Date().getFullYear()} Eleanor & Co. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Go Big Al Williams. All rights reserved.</p>
             <span className="hidden md:inline">•</span>
             <div className="flex gap-4">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>

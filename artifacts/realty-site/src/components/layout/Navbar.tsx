@@ -40,7 +40,7 @@ export function Navbar() {
             </div>
             <div className="flex flex-col">
               <span className={`font-serif font-bold text-xl leading-none tracking-tight ${isScrolled ? "text-primary" : "text-white"}`}>
-                Eleanor & Co.
+                Go Big Al Williams
               </span>
               <span className={`text-[10px] uppercase tracking-widest ${isScrolled ? "text-muted-foreground" : "text-white/80"}`}>
                 Real Estate & Finance

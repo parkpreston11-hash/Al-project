@@ -367,7 +367,7 @@ export default function AdminDashboard() {
           <div className="bg-white text-primary p-1.5 rounded-sm">
             <HomeIcon size={16} />
           </div>
-          <span className="font-serif font-bold text-white text-lg">Eleanor & Co.</span>
+          <span className="font-serif font-bold text-white text-lg">Go Big Al Williams</span>
           <span className="text-white/40 text-sm ml-2 hidden sm:inline">/ Admin</span>
         </Link>
         <Button

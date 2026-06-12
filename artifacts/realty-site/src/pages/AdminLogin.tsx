@@ -49,7 +49,7 @@ export default function AdminLogin() {
             <HomeIcon size={18} />
           </div>
           <div className="flex flex-col">
-            <span className="font-serif font-bold text-lg leading-none text-white">Eleanor & Co.</span>
+            <span className="font-serif font-bold text-lg leading-none text-white">Go Big Al Williams</span>
             <span className="text-[10px] uppercase tracking-widest text-white/60">Real Estate & Finance</span>
           </div>
         </Link>
