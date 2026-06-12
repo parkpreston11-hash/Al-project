@@ -1,22 +1,26 @@
 openapi: 3.1.0
 info:
-  # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: Real Estate & Loan Officer API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: listings
+    description: Property listings
+  - name: leads
+    description: Lead form submissions
+  - name: admin
+    description: Admin dashboard operations
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,6 +28,235 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /listings:
+    get:
+      operationId: getListings
+      tags: [listings]
+      summary: Get all active listings
+      responses:
+        "200":
+          description: List of active listings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Listing"
+
+  /listings/sold:
+    get:
+      operationId: getSoldListings
+      tags: [listings]
+      summary: Get recently sold homes
+      responses:
+        "200":
+          description: List of sold listings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Listing"
+
+  /listings/{id}:
+    get:
+      operationId: getListingById
+      tags: [listings]
+      summary: Get a listing by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Listing details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Listing"
+        "404":
+          description: Not found
+
+  /leads/contact:
+    post:
+      operationId: submitContactLead
+      tags: [leads]
+      summary: Submit a general contact form
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactLeadInput"
+      responses:
+        "201":
+          description: Lead submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LeadResponse"
+
+  /leads/seller:
+    post:
+      operationId: submitSellerLead
+      tags: [leads]
+      summary: Submit a seller lead form
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SellerLeadInput"
+      responses:
+        "201":
+          description: Lead submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LeadResponse"
+
+  /leads/buyer-plan:
+    post:
+      operationId: submitBuyerPlanLead
+      tags: [leads]
+      summary: Submit a home buying plan form
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BuyerPlanLeadInput"
+      responses:
+        "201":
+          description: Lead submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LeadResponse"
+
+  /admin/login:
+    post:
+      operationId: adminLogin
+      tags: [admin]
+      summary: Admin login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdminLoginInput"
+      responses:
+        "200":
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminAuthResult"
+        "401":
+          description: Invalid credentials
+
+  /admin/leads:
+    get:
+      operationId: getAdminLeads
+      tags: [admin]
+      summary: Get all leads (admin)
+      parameters:
+        - name: type
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [contact, seller, buyer_plan, all]
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: search
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of leads
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Lead"
+        "401":
+          description: Unauthorized
+
+  /admin/leads/{id}:
+    get:
+      operationId: getAdminLeadById
+      tags: [admin]
+      summary: Get a lead by ID (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Lead details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+    patch:
+      operationId: updateAdminLead
+      tags: [admin]
+      summary: Update lead status or notes (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadUpdate"
+      responses:
+        "200":
+          description: Lead updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+
+  /admin/stats:
+    get:
+      operationId: getAdminStats
+      tags: [admin]
+      summary: Get lead summary statistics (admin)
+      responses:
+        "200":
+          description: Stats summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminStats"
+        "401":
+          description: Unauthorized
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +267,250 @@ components:
       required:
         - status
 
+    Listing:
+      type: object
+      properties:
+        id:
+          type: integer
+        status:
+          type: string
+          enum: [active, sold]
+        price:
+          type: integer
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        beds:
+          type: integer
+        baths:
+          type: number
+        sqft:
+          type: integer
+        description:
+          type: string
+        shortDescription:
+          type: string
+        soldDescription:
+          type: ["string", "null"]
+        imageUrl:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+        features:
+          type: array
+          items:
+            type: string
+        soldDate:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+      required:
+        - id
+        - status
+        - price
+        - address
+        - city
+        - state
+        - zip
+        - beds
+        - baths
+        - sqft
+        - description
+        - shortDescription
+        - imageUrl
+        - images
+        - features
+        - createdAt
+
+    Lead:
+      type: object
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+          enum: [contact, seller, buyer_plan]
+        status:
+          type: string
+          enum: [new, contacted, appointment_scheduled, active_client, closed]
+        fullName:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        notes:
+          type: ["string", "null"]
+        data:
+          type: object
+          description: Form-specific field data stored as JSON
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+        - id
+        - type
+        - status
+        - fullName
+        - phone
+        - email
+        - data
+        - createdAt
+        - updatedAt
+
+    LeadResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+      required:
+        - success
+        - message
+
+    ContactLeadInput:
+      type: object
+      properties:
+        fullName:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        message:
+          type: string
+      required:
+        - fullName
+        - phone
+        - email
+
+    SellerLeadInput:
+      type: object
+      properties:
+        fullName:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        propertyAddress:
+          type: string
+        timeline:
+          type: string
+        message:
+          type: string
+      required:
+        - fullName
+        - phone
+        - email
+        - propertyAddress
+
+    BuyerPlanLeadInput:
+      type: object
+      properties:
+        fullName:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        purpose:
+          type: string
+          enum: [buying, refinancing]
+        priceRange:
+          type: string
+        downPaymentRange:
+          type: string
+        creditScoreRange:
+          type: string
+        timeline:
+          type: string
+        comments:
+          type: string
+      required:
+        - fullName
+        - phone
+        - email
+        - purpose
+
+    AdminLoginInput:
+      type: object
+      properties:
+        password:
+          type: string
+      required:
+        - password
+
+    AdminAuthResult:
+      type: object
+      properties:
+        token:
+          type: string
+        success:
+          type: boolean
+      required:
+        - token
+        - success
+
+    LeadUpdate:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [new, contacted, appointment_scheduled, active_client, closed]
+        notes:
+          type: string
+
+    AdminStats:
+      type: object
+      properties:
+        total:
+          type: integer
+        byType:
+          type: object
+          properties:
+            contact:
+              type: integer
+            seller:
+              type: integer
+            buyer_plan:
+              type: integer
+          required:
+            - contact
+            - seller
+            - buyer_plan
+        byStatus:
+          type: object
+          properties:
+            new:
+              type: integer
+            contacted:
+              type: integer
+            appointment_scheduled:
+              type: integer
+            active_client:
+              type: integer
+            closed:
+              type: integer
+          required:
+            - new
+            - contacted
+            - appointment_scheduled
+            - active_client
+            - closed
+        newThisWeek:
+          type: integer
+      required:
+        - total
+        - byType
+        - byStatus
+        - newThisWeek

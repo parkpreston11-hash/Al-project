@@ -1,0 +1,2 @@
+- [Drizzle date serialization](drizzle-date-serialization.md) — Drizzle returns Date objects; Zod schemas expect ISO strings. Always serialize before parse.
+- [Framer Motion ease type](framer-motion-ease.md) — `ease: "easeOut" as const` required; plain string causes TS2322 against Easing union.

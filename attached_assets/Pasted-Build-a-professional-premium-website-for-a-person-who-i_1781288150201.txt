@@ -1,0 +1,254 @@
+Build a professional, premium website for a person who is both a real estate agent and a loan officer.
+
+The website should look modern, trustworthy, clean, and high-end, but the backend should stay simple and reliable. Do not build anything overly complicated that could easily break. Focus on a polished front-end, simple lead forms, and a basic admin dashboard.
+
+Main goal:
+The website should help visitors view homes, learn about buying/selling/financing, and contact the agent/loan officer.
+
+Brand message:
+“One trusted professional for buying, selling, and financing your home.”
+
+Design style:
+Use a luxury real estate style with white, dark navy, charcoal, soft gray, and subtle gold accents. Use clean spacing, modern fonts, rounded cards, smooth hover effects, professional icons, and high-quality home imagery. Make the site fully mobile responsive.
+
+Pages to create:
+
+1. Home Page
+
+Create a strong hero section with:
+
+* Professional photo placeholder
+* Luxury home background image
+* Headline: “Buy, Sell, and Finance Your Home With Confidence”
+* Subheadline: “Work with one trusted professional for real estate guidance and home financing support.”
+* Buttons:
+    * View Homes
+    * Start My Home Buying Plan
+    * Contact Me
+
+Add sections for:
+
+* Featured Listings
+* Recently Sold Homes
+* Loan Programs
+* Why Work With Me
+* Simple Home Buying Roadmap
+* Testimonials
+* Contact call-to-action
+
+2. Current Listings Page
+
+Create a page that shows homes currently for sale.
+
+Each listing card should include:
+
+* Property photo
+* Price
+* Address
+* Beds
+* Baths
+* Square feet
+* Short description
+* View Details button
+
+Keep the listings editable from simple sample data. Do not connect to MLS or outside APIs.
+
+3. Property Details Page
+
+When someone clicks a listing, show:
+
+* Large image gallery
+* Price
+* Address
+* Beds, baths, square feet
+* Property description
+* Features and amenities
+* Estimated monthly payment section
+* Contact / Schedule Showing button
+
+Estimated payment should be simple and only for display. Include this disclaimer:
+“Estimated payment is for educational purposes only and does not represent final loan terms or approval.”
+
+4. Recently Sold Page
+
+Create a clean gallery of recently sold homes.
+
+Each sold property should show:
+
+* Photo
+* Sold badge
+* Address
+* Sold price
+* Beds, baths, square feet
+* Short success description
+
+This page should build trust and show proof of experience.
+
+5. Sell Your Home Page
+
+Create a page for seller leads.
+
+Headline:
+“Thinking About Selling Your Home?”
+
+Include sections:
+
+* Why sell with this agent
+* Local market knowledge
+* Professional marketing
+* Negotiation support
+* Smooth closing process
+
+Add a simple form:
+
+* Full name
+* Phone number
+* Email
+* Property address
+* Timeline to sell
+* Message
+
+Button text:
+“Request My Home Value”
+
+6. Loan Officer Page
+
+Create a professional page explaining the loan officer side.
+
+Headline:
+“Home Financing Made Simple”
+
+Explain that visitors can get guidance on possible loan options, monthly payment estimates, and the home buying process.
+
+Include loan program cards:
+
+* FHA Loans
+* Conventional Loans
+* VA Loans
+* Jumbo Loans
+* Refinance Options
+* Investment Property Loans
+
+Each card should have:
+
+* Simple explanation
+* Who it may be good for
+* Contact button
+
+Do not promise approval, rates, or exact terms.
+
+7. Mortgage Calculator Page
+
+Create a simple mortgage calculator with:
+
+* Home price
+* Down payment
+* Interest rate
+* Loan term
+
+Display estimated monthly payment.
+
+Include disclaimer:
+“This calculator provides estimates only. Actual payment, rate, and loan terms may vary.”
+
+8. Home Buying Plan Form
+
+Create a simple lead form, not a full loan application.
+
+Fields:
+
+* Full name
+* Phone number
+* Email
+* Buying or refinancing?
+* Desired price range
+* Estimated down payment range
+* Credit score range
+* Desired purchase timeline
+* Additional comments
+
+Button text:
+“Start My Home Buying Plan”
+
+After submission, show:
+“Thank you. Your information has been received. A professional will contact you soon.”
+
+Add disclaimer:
+“This is not a loan application or approval. Information submitted is used so a licensed professional can contact you to discuss possible options.”
+
+9. About Page
+
+Create a professional about page with:
+
+* Headshot placeholder
+* Biography
+* Real estate experience
+* Loan officer experience
+* Areas served
+* Mission statement
+* Contact button
+
+Make the tone trustworthy, confident, and personal.
+
+10. Contact Page
+
+Include:
+
+* Phone number
+* Email address
+* Office location
+* Business hours
+* Contact form
+* Map placeholder
+
+11. Admin Dashboard
+
+Create a simple password-protected admin dashboard.
+
+The dashboard should allow the owner to:
+
+* View leads from forms
+* View buyer leads
+* View seller leads
+* View home buying plan submissions
+* Search leads
+* Sort leads by newest
+* Change lead status
+* Add notes to leads
+* Export leads to CSV
+
+Lead statuses:
+
+* New Lead
+* Contacted
+* Appointment Scheduled
+* Active Client
+* Closed
+
+Keep this dashboard simple. Do not add complex CRM features.
+
+Important backend instructions:
+
+* Do not use email automation.
+* Do not connect to MLS.
+* Do not connect to credit checks.
+* Do not add document uploads.
+* Do not add payment processing.
+* Do not add complicated loan approval logic.
+* Store form submissions in a simple database.
+* Use sample listings that can be edited manually.
+* Prioritize stability over complex features.
+
+Footer:
+Include:
+
+* Navigation links
+* Contact info
+* Social media placeholders
+* Licensing information placeholder
+* Equal Housing Opportunity text
+* Privacy Policy
+* Terms of Service
+
+Overall feeling:
+The website should feel like a premium real estate and mortgage website, but be built in a simple, stable way that will not easily break.

@@ -1,0 +1,26 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "J-pyl-P1wVEaD1FKJJ6BZ"
+uri = "file://attached_assets/hero.png"
+type = "image"
+title = "Luxury home exterior at twilight"
+
+[[generated]]
+id = "JQxvj68NQxQGpRfWFynVd"
+uri = "file://attached_assets/property-1.png"
+type = "image"
+title = "Modern luxury home exterior"
+
+[[generated]]
+id = "D2evwdQBt505K0OUrHxn5"
+uri = "file://attached_assets/property-2.png"
+type = "image"
+title = "Classic luxury estate exterior"
+
+[[generated]]
+id = "vatn7e5m5-AZNGUNarcNJ"
+uri = "file://attached_assets/property-3.png"
+type = "image"
+title = "Waterfront luxury home exterior"
