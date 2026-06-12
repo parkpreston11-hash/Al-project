@@ -86,11 +86,10 @@ export default function Home() {
       {/* Stats Bar */}
       <section className="bg-accent/10 border-y border-accent/20 py-8">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-3 gap-8 text-center">
             {[
-              { value: "150+", label: "Homes Sold" },
-              { value: "$85M+", label: "Volume Closed" },
-              { value: "12+", label: "Years Experience" },
+              { value: "55+", label: "Homes Sold" },
+              { value: "30+", label: "Years Experience" },
               { value: "98%", label: "Client Satisfaction" },
             ].map((stat, i) => (
               <div key={i} data-testid={`stat-${i}`}>

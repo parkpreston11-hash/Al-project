@@ -34,7 +34,7 @@ export default function About() {
                   />
                 </div>
                 <div className="absolute -bottom-5 -right-5 bg-accent text-primary p-5 rounded-lg shadow-lg">
-                  <p className="text-3xl font-serif font-bold leading-none">12+</p>
+                  <p className="text-3xl font-serif font-bold leading-none">30+</p>
                   <p className="text-sm font-semibold mt-1">Years of Experience</p>
                 </div>
               </div>
