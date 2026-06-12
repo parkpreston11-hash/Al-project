@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Phone, MapPin, Clock, Facebook, Instagram, Linkedin } from "lucide-react";
 import { Link } from "wouter";
 
 const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
@@ -36,29 +36,11 @@ export default function Contact() {
                 <h3 className="text-lg font-bold text-primary mb-1">Phone</h3>
                 <p className="text-muted-foreground text-sm mb-4">Call or text — I'm here to help.</p>
                 <a
-                  href="tel:5551234567"
+                  href="tel:6263911325"
                   className="text-2xl font-serif font-bold text-primary hover:text-accent transition-colors"
                   data-testid="contact-phone-number"
                 >
-                  (555) 123-4567
-                </a>
-              </Card>
-            </motion.div>
-
-            {/* Email */}
-            <motion.div variants={fadeUp}>
-              <Card className="p-8 border border-border h-full hover:shadow-md hover:border-accent/40 transition-all" data-testid="contact-email">
-                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-5">
-                  <Mail size={22} className="text-accent" />
-                </div>
-                <h3 className="text-lg font-bold text-primary mb-1">Email</h3>
-                <p className="text-muted-foreground text-sm mb-4">Send a message anytime.</p>
-                <a
-                  href="mailto:hello@eleanorandco.com"
-                  className="text-xl font-semibold text-primary hover:text-accent transition-colors break-all"
-                  data-testid="contact-email-address"
-                >
-                  hello@eleanorandco.com
+                  (626) 391-1325
                 </a>
               </Card>
             </motion.div>
@@ -70,32 +52,32 @@ export default function Contact() {
                   <MapPin size={22} className="text-accent" />
                 </div>
                 <h3 className="text-lg font-bold text-primary mb-1">Office</h3>
-                <p className="text-muted-foreground text-sm mb-4">We serve the greater Austin metro area.</p>
+                <p className="text-muted-foreground text-sm mb-4">Serving the greater Los Angeles & Inland Empire area.</p>
                 <address className="not-italic text-primary font-semibold leading-relaxed">
-                  123 Luxury Way, Suite 100<br />
-                  Austin, TX 78701
+                  129½ W Badillo St<br />
+                  Covina, CA 91723
                 </address>
               </Card>
             </motion.div>
 
             {/* Hours */}
-            <motion.div variants={fadeUp}>
+            <motion.div variants={fadeUp} className="md:col-span-2">
               <Card className="p-8 border border-border h-full hover:shadow-md hover:border-accent/40 transition-all" data-testid="contact-hours">
                 <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-5">
                   <Clock size={22} className="text-accent" />
                 </div>
                 <h3 className="text-lg font-bold text-primary mb-1">Business Hours</h3>
                 <p className="text-muted-foreground text-sm mb-4">Available most days — evenings by appointment.</p>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between gap-8">
+                <div className="grid sm:grid-cols-3 gap-4 text-sm">
+                  <div className="flex justify-between sm:flex-col gap-1">
                     <span className="text-muted-foreground">Monday – Friday</span>
                     <span className="font-semibold text-primary">9am – 6pm</span>
                   </div>
-                  <div className="flex justify-between gap-8">
+                  <div className="flex justify-between sm:flex-col gap-1">
                     <span className="text-muted-foreground">Saturday</span>
                     <span className="font-semibold text-primary">10am – 4pm</span>
                   </div>
-                  <div className="flex justify-between gap-8">
+                  <div className="flex justify-between sm:flex-col gap-1">
                     <span className="text-muted-foreground">Sunday</span>
                     <span className="font-semibold text-primary">By appointment</span>
                   </div>
@@ -118,7 +100,11 @@ export default function Contact() {
                   <div className="flex flex-wrap gap-6 text-sm">
                     <div>
                       <span className="text-muted-foreground">DRE</span>
-                      <span className="font-bold text-primary ml-2">#01234567</span>
+                      <span className="font-bold text-primary ml-2">#01461081</span>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Homes Better DRE</span>
+                      <span className="font-bold text-primary ml-2">#01527840</span>
                     </div>
                     <div>
                       <span className="text-muted-foreground">NMLS</span>
@@ -146,7 +132,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* CTA to start a plan */}
+      {/* CTA */}
       <section className="py-16 bg-primary text-center">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-serif font-bold text-white mb-4">Ready to Get Started?</h2>

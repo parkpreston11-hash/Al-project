@@ -1,14 +1,14 @@
 import { Link } from "wouter";
-import { Home as HomeIcon, Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Home as HomeIcon, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
 
 export function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground pt-16 pb-8">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          
+
           <div>
-             <Link href="/" className="flex items-center gap-2 mb-6">
+            <Link href="/" className="flex items-center gap-2 mb-6">
               <div className="bg-white text-primary p-2 rounded-sm">
                 <HomeIcon size={20} />
               </div>
@@ -56,18 +56,14 @@ export function Footer() {
             <h3 className="font-serif font-semibold text-lg mb-6 tracking-wide">Contact</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Phone size={18} className="text-accent mt-0.5" />
-                <span className="text-primary-foreground/70 text-sm">(555) 123-4567</span>
+                <Phone size={18} className="text-accent mt-0.5 flex-shrink-0" />
+                <a href="tel:6263911325" className="text-primary-foreground/70 text-sm hover:text-accent transition-colors">(626) 391-1325</a>
               </li>
               <li className="flex items-start gap-3">
-                <Mail size={18} className="text-accent mt-0.5" />
-                <span className="text-primary-foreground/70 text-sm">hello@eleanorandco.com</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin size={18} className="text-accent mt-0.5" />
+                <MapPin size={18} className="text-accent mt-0.5 flex-shrink-0" />
                 <span className="text-primary-foreground/70 text-sm leading-relaxed">
-                  123 Luxury Way, Suite 100<br />
-                  Beverly Hills, CA 90210
+                  129½ W Badillo St<br />
+                  Covina, CA 91723
                 </span>
               </li>
             </ul>
@@ -84,12 +80,11 @@ export function Footer() {
               <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <span>DRE #01234567</span>
+          <div className="flex flex-wrap items-center gap-4">
+            <span>DRE #01461081</span>
+            <span>Homes Better DRE #01527840</span>
             <span>NMLS #271420</span>
-            <span className="flex items-center gap-1">
-               Equal Housing Opportunity
-            </span>
+            <span className="flex items-center gap-1">Equal Housing Opportunity</span>
           </div>
         </div>
       </div>

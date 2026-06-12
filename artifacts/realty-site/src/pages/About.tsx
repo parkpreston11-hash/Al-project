@@ -15,7 +15,7 @@ export default function About() {
         <div className="container mx-auto px-4 md:px-6">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-2">The Person Behind the Work</p>
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">About Me</h1>
-          <p className="text-white/70 max-w-xl">A licensed Realtor and Loan Officer with a decade of experience helping families in the Austin area buy, sell, and finance their homes.</p>
+          <p className="text-white/70 max-w-xl">A licensed Realtor and Loan Officer with decades of experience helping families across Southern California and the Inland Empire buy, sell, and finance their homes.</p>
         </div>
       </section>
 
@@ -41,19 +41,19 @@ export default function About() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3">Eleanor Hargrove</p>
+              <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3">Al Williams</p>
               <h2 className="text-3xl font-serif font-bold text-primary mb-2">Realtor & Loan Officer</h2>
-              <p className="text-muted-foreground text-sm mb-6">DRE #01234567 | NMLS #1234567</p>
+              <p className="text-muted-foreground text-sm mb-6">DRE #01461081 &nbsp;|&nbsp; Homes Better DRE #01527840 &nbsp;|&nbsp; NMLS #271420</p>
 
               <div className="space-y-5 text-muted-foreground leading-relaxed">
                 <p>
-                  I began my career in real estate over twelve years ago with a simple belief: that people deserve one trusted advisor who can guide them through every part of the transaction — not a patchwork of professionals who don't talk to each other.
+                  I began my career in real estate with a simple belief: that people deserve one trusted advisor who can guide them through every part of the transaction — not a patchwork of professionals who don't talk to each other.
                 </p>
                 <p>
-                  Today, I serve buyers, sellers, and homeowners throughout the Austin metro area as both a licensed Realtor and a licensed Loan Officer. That dual expertise allows me to give clients a level of transparency and coordination that's genuinely rare in this industry.
+                  Today, I serve buyers, sellers, and homeowners throughout Southern California and the Inland Empire as both a licensed Realtor and a licensed Loan Officer. That dual expertise allows me to give clients a level of transparency and coordination that's genuinely rare in this industry.
                 </p>
                 <p>
-                  I've closed over 150 transactions totaling more than $85 million in volume. But the number I'm most proud of is the number of repeat clients and referrals — people who come back, and people who send their friends, because they trusted the experience.
+                  I've closed over 150 transactions totaling more than $85 million in volume. But the number I'm most proud of is the number of repeat clients and referrals — people who come back, and people who send their friends and family, because they trusted the experience.
                 </p>
               </div>
 
@@ -136,8 +136,8 @@ export default function About() {
         <div className="container mx-auto px-4 md:px-6 text-center">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-2">Coverage</p>
           <h2 className="text-3xl font-serif font-bold text-primary mb-8">Areas Served</h2>
-          <div className="flex flex-wrap gap-3 justify-center max-w-2xl mx-auto">
-            {["Austin", "Round Rock", "Cedar Park", "Pflugerville", "Bee Cave", "Westlake Hills", "Georgetown", "Leander", "Kyle", "Buda"].map((area, i) => (
+          <div className="flex flex-wrap gap-3 justify-center max-w-3xl mx-auto">
+            {["Anaheim", "Buena Park", "Chino", "Chino Hills", "Corona", "Eastvale", "Fontana", "Fullerton", "Garden Grove", "Jurupa Valley", "La Habra", "La Palma", "Los Angeles", "Orange", "Rancho Cucamonga", "Riverside", "Santa Ana", "Tustin"].map((area, i) => (
               <span key={i} className="flex items-center gap-1.5 px-4 py-2 bg-white rounded-full border border-border text-sm font-medium text-foreground" data-testid={`area-${i}`}>
                 <MapPin size={13} className="text-accent" /> {area}
               </span>
