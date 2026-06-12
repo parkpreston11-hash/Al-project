@@ -38,7 +38,7 @@ export default function Home() {
       <section className="relative h-[92vh] min-h-[640px] flex items-center justify-center pt-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=85"
+            src="/hero-bg.png"
             alt="Luxury home"
             className="w-full h-full object-cover scale-105"
           />
@@ -341,9 +341,21 @@ export default function Home() {
             className="grid md:grid-cols-3 gap-6"
           >
             {[
-              { quote: "Working with one professional for both the real estate and mortgage side was a game-changer. We closed in 28 days with zero stress.", name: "Marcus & Jennifer W.", location: "Bought in South Austin" },
-              { quote: "She negotiated $40,000 off the asking price and helped us secure a rate we didn't think we could qualify for. Absolutely worth every call.", name: "David H.", location: "Bought in Westlake Hills" },
-              { quote: "Our home sold in 5 days with multiple offers. She priced it perfectly and the marketing was incredible. We couldn't be happier.", name: "Sarah M.", location: "Sold in Cedar Park" },
+              {
+                quote: "Al, was the person who sold me my current home and 8 years later Al was there to help me do a cash out refinance! Al is very good at what he does and will work his behind off to get the job done. He is the real deal! Thanks Al.",
+                name: "Verified Client",
+                location: "Home Purchase & Cash-Out Refinance",
+              },
+              {
+                quote: "Thank you Al for all your hard work, thanks to you and Blanca Quinones we were able to buy our first house. You didn't give up even when I was giving up. I remember your exact words \"we will make it happen\" and it happened. God put you guys in our paths — less than 1½ months we bought our first house. I will recommend you guys 100%. May God bless you.",
+                name: "First-Time Homebuyer",
+                location: "Bought Their First Home",
+              },
+              {
+                quote: "Knowing Al for over 30 years has been an incredible privilege. When the time came to navigate inheriting our late parents' home and trust, Al was an unwavering source of support. His compassion, expertise, and exceptional communication made the entire process seamless. No question went unanswered, no concern was ever overlooked. Beyond his remarkable service, Al has fostered a lasting friendship we deeply cherish. We wholeheartedly recommend Al for all your real estate needs.",
+                name: "Family Estate Client",
+                location: "Estate & Trust Transaction",
+              },
             ].map((testimonial, i) => (
               <motion.div key={i} variants={fadeInUp}>
                 <Card className="p-8 h-full border border-border bg-white" data-testid={`testimonial-${i}`}>
