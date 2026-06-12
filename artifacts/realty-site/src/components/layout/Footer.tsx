@@ -86,7 +86,7 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-4">
             <span>DRE #01234567</span>
-            <span>NMLS #1234567</span>
+            <span>NMLS #271420</span>
             <span className="flex items-center gap-1">
                Equal Housing Opportunity
             </span>
