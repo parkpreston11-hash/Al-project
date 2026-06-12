@@ -25,11 +25,11 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="relative">
-                <div className="aspect-[4/5] rounded-xl overflow-hidden bg-secondary">
+                <div className="aspect-square rounded-xl overflow-hidden bg-secondary">
                   <img
-                    src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80"
-                    alt="Professional headshot"
-                    className="w-full h-full object-cover object-top"
+                    src="/al-williams.jpeg"
+                    alt="Al Williams — Realtor & Loan Officer"
+                    className="w-full h-full object-cover object-center"
                     data-testid="about-headshot"
                   />
                 </div>
@@ -53,7 +53,7 @@ export default function About() {
                   Today, I serve buyers, sellers, and homeowners throughout Southern California and the Inland Empire as both a licensed Realtor and a licensed Loan Officer. That dual expertise allows me to give clients a level of transparency and coordination that's genuinely rare in this industry.
                 </p>
                 <p>
-                  I've closed over 150 transactions totaling more than $85 million in volume. But the number I'm most proud of is the number of repeat clients and referrals — people who come back, and people who send their friends and family, because they trusted the experience.
+                  I've sold over 55 properties throughout California. But the number I'm most proud of is the number of repeat clients and referrals — people who come back, and people who send their friends and family, because they trusted the experience.
                 </p>
               </div>
 
@@ -91,7 +91,7 @@ export default function About() {
                 <ul className="space-y-2 text-muted-foreground text-sm">
                   {[
                     "Licensed Realtor since 2013",
-                    "150+ transactions closed",
+                    "55+ properties sold throughout California",
                     "Buyer & seller representation",
                     "Relocation specialist",
                     "Luxury property marketing",
