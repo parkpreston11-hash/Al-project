@@ -128,6 +128,8 @@ export default function AdminDashboard() {
   const [formSaving, setFormSaving] = useState(false);
   const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
+  const [deleteLeadConfirmId, setDeleteLeadConfirmId] = useState<number | null>(null);
+  const [deleteLeadLoading, setDeleteLeadLoading] = useState(false);
 
   const token = localStorage.getItem("admin_token");
   useEffect(() => {
@@ -273,6 +275,19 @@ export default function AdminDashboard() {
     });
     loadListings();
     queryClient.invalidateQueries({ predicate: (q) => String(q.queryKey[0]).includes("listing") });
+  }
+
+  async function deleteLead(id: number) {
+    setDeleteLeadLoading(true);
+    try {
+      await adminFetch(`/api/admin/leads/${id}`, { method: "DELETE" });
+      setDeleteLeadConfirmId(null);
+      setSelectedLeadId(null);
+      queryClient.invalidateQueries({ queryKey: getGetAdminLeadsQueryKey({ type: activeLeadTab, search: search || undefined }) });
+      queryClient.invalidateQueries({ queryKey: getGetAdminStatsQueryKey() });
+    } finally {
+      setDeleteLeadLoading(false);
+    }
   }
 
   async function deleteListing(id: number) {
@@ -464,7 +479,17 @@ export default function AdminDashboard() {
                               <span className="text-xs text-muted-foreground">{formatDate(selectedLead.data.createdAt)}</span>
                             </div>
                           </div>
-                          <button onClick={() => setSelectedLeadId(null)} className="text-muted-foreground hover:text-primary p-1"><X size={18} /></button>
+                          <div className="flex items-center gap-1">
+                            <button
+                              onClick={() => setDeleteLeadConfirmId(selectedLeadId)}
+                              className="text-muted-foreground hover:text-destructive p-1 transition-colors"
+                              title="Delete lead"
+                              data-testid="button-delete-lead"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                            <button onClick={() => setSelectedLeadId(null)} className="text-muted-foreground hover:text-primary p-1"><X size={18} /></button>
+                          </div>
                         </div>
                         <div className="p-6 space-y-6">
                           <div className="grid sm:grid-cols-2 gap-3">
@@ -803,6 +828,36 @@ export default function AdminDashboard() {
                   {formSaving ? "Saving..." : editingListing ? "Save Changes" : "Add Property"}
                 </Button>
               </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* ── Delete Lead Confirm Modal ──────────────────────────────────────── */}
+      <AnimatePresence>
+        {deleteLeadConfirmId !== null && (
+          <>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-black/50 z-40" onClick={() => setDeleteLeadConfirmId(null)} />
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="fixed inset-0 z-50 flex items-center justify-center p-4">
+              <Card className="p-8 max-w-sm w-full text-center border border-border shadow-xl" data-testid="delete-lead-confirm-dialog">
+                <div className="w-14 h-14 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <AlertTriangle size={26} className="text-red-500" />
+                </div>
+                <h3 className="font-bold text-primary text-lg mb-2">Delete Lead?</h3>
+                <p className="text-muted-foreground text-sm mb-6">This will permanently remove this lead and cannot be undone.</p>
+                <div className="flex gap-3">
+                  <Button variant="outline" className="flex-1" onClick={() => setDeleteLeadConfirmId(null)}>Cancel</Button>
+                  <Button
+                    variant="destructive"
+                    className="flex-1"
+                    disabled={deleteLeadLoading}
+                    onClick={() => deleteLeadConfirmId !== null && deleteLead(deleteLeadConfirmId)}
+                    data-testid="button-confirm-delete-lead"
+                  >
+                    {deleteLeadLoading ? "Deleting..." : "Delete"}
+                  </Button>
+                </div>
+              </Card>
             </motion.div>
           </>
         )}

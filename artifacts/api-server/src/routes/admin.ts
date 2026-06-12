@@ -162,6 +162,21 @@ router.get("/admin/leads/:id", requireAdmin, async (req, res): Promise<void> => 
   res.json(GetAdminLeadByIdResponse.parse(serialize(lead)));
 });
 
+router.delete("/admin/leads/:id", requireAdmin, async (req, res): Promise<void> => {
+  const raw = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+  const id = parseInt(raw as string, 10);
+  if (isNaN(id)) {
+    res.status(400).json({ error: "Invalid id" });
+    return;
+  }
+  const [lead] = await db.delete(leadsTable).where(eq(leadsTable.id, id)).returning();
+  if (!lead) {
+    res.status(404).json({ error: "Lead not found" });
+    return;
+  }
+  res.status(200).json({ success: true });
+});
+
 router.patch("/admin/leads/:id", requireAdmin, async (req, res): Promise<void> => {
   const raw = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
   const params = UpdateAdminLeadParams.safeParse({ id: raw });
