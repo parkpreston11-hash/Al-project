@@ -36,11 +36,11 @@ export default function Contact() {
                 <h3 className="text-lg font-bold text-primary mb-1">Phone</h3>
                 <p className="text-muted-foreground text-sm mb-4">Call or text — I'm here to help.</p>
                 <a
-                  href="tel:6263911325"
+                  href="tel:6263911342"
                   className="text-2xl font-serif font-bold text-primary hover:text-accent transition-colors"
                   data-testid="contact-phone-number"
                 >
-                  (626) 391-1325
+                  (626) 391-1342
                 </a>
               </Card>
             </motion.div>

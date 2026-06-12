@@ -57,7 +57,7 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone size={18} className="text-accent mt-0.5 flex-shrink-0" />
-                <a href="tel:6263911325" className="text-primary-foreground/70 text-sm hover:text-accent transition-colors">(626) 391-1325</a>
+                <a href="tel:6263911342" className="text-primary-foreground/70 text-sm hover:text-accent transition-colors">(626) 391-1342</a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-accent mt-0.5 flex-shrink-0" />
