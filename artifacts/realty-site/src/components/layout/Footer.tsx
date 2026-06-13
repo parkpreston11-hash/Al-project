@@ -62,8 +62,8 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-accent mt-0.5 flex-shrink-0" />
                 <span className="text-primary-foreground/70 text-sm leading-relaxed">
-                  129½ W Badillo St<br />
-                  Covina, CA 91723
+                  17220 Newhope St Ste 214A<br />
+                  Fountain Valley, CA 92708
                 </span>
               </li>
             </ul>

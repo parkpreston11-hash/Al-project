@@ -54,8 +54,8 @@ export default function Contact() {
                 <h3 className="text-lg font-bold text-primary mb-1">Office</h3>
                 <p className="text-muted-foreground text-sm mb-4">Serving the greater Los Angeles & Inland Empire area.</p>
                 <address className="not-italic text-primary font-semibold leading-relaxed">
-                  129½ W Badillo St<br />
-                  Covina, CA 91723
+                  17220 Newhope St Ste 214A<br />
+                  Fountain Valley, CA 92708
                 </address>
               </Card>
             </motion.div>
