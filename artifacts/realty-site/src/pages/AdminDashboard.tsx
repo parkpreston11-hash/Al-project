@@ -122,6 +122,7 @@ export default function AdminDashboard() {
   // ── Properties state ──
   const [listings, setListings] = useState<AdminListing[]>([]);
   const [listingsLoading, setListingsLoading] = useState(false);
+  const [listingsError, setListingsError] = useState<string | null>(null);
   const [propertyFilter, setPropertyFilter] = useState<"all" | "active" | "sold">("all");
   const [showListingForm, setShowListingForm] = useState(false);
   const [editingListing, setEditingListing] = useState<AdminListing | null>(null);
@@ -161,9 +162,17 @@ export default function AdminDashboard() {
   const loadListings = useCallback(async () => {
     if (!token) return;
     setListingsLoading(true);
+    setListingsError(null);
     try {
       const res = await adminFetch("/api/admin/listings");
-      if (res.ok) setListings(await res.json());
+      if (res.ok) {
+        setListings(await res.json());
+      } else {
+        const body = await res.json().catch(() => ({}));
+        setListingsError(body?.error ?? `Server error ${res.status} — check that DATABASE_URL is set in your deployment environment.`);
+      }
+    } catch {
+      setListingsError("Could not reach the API. Check your internet connection or deployment configuration.");
     } finally {
       setListingsLoading(false);
     }
@@ -177,7 +186,7 @@ export default function AdminDashboard() {
   const listingForm = useForm<ListingFormValues>({
     resolver: zodResolver(listingSchema),
     defaultValues: {
-      status: "active", price: 0, address: "", city: "", state: "TX", zip: "",
+      status: "active", price: 0, address: "", city: "", state: "CA", zip: "",
       beds: 3, baths: 2, sqft: 0, description: "", shortDescription: "",
       soldDescription: "", imageUrl: "", imagesRaw: "", featuresRaw: "", soldDate: "",
     },
@@ -186,7 +195,7 @@ export default function AdminDashboard() {
   function openAddListing() {
     setEditingListing(null);
     listingForm.reset({
-      status: "active", price: 0, address: "", city: "", state: "TX", zip: "",
+      status: "active", price: 0, address: "", city: "", state: "CA", zip: "",
       beds: 3, baths: 2, sqft: 0, description: "", shortDescription: "",
       soldDescription: "", imageUrl: "", imagesRaw: "", featuresRaw: "", soldDate: "",
     });
@@ -582,6 +591,13 @@ export default function AdminDashboard() {
               <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
                 {[1, 2, 3].map(i => <div key={i} className="h-64 bg-secondary animate-pulse rounded-lg" />)}
               </div>
+            ) : listingsError ? (
+              <Card className="p-16 text-center border border-destructive/40 bg-destructive/5">
+                <AlertTriangle size={32} className="text-destructive mx-auto mb-4" />
+                <p className="font-medium text-primary mb-1">Could not load properties</p>
+                <p className="text-muted-foreground text-sm mb-5 max-w-md mx-auto">{listingsError}</p>
+                <Button variant="outline" onClick={loadListings}>Retry</Button>
+              </Card>
             ) : filteredListings.length === 0 ? (
               <Card className="p-16 text-center border border-border">
                 <Building2 size={32} className="text-muted-foreground mx-auto mb-4" />
@@ -717,7 +733,7 @@ export default function AdminDashboard() {
                       <FormField control={listingForm.control} name="state" render={({ field }) => (
                         <FormItem>
                           <FormLabel>State *</FormLabel>
-                          <FormControl><Input placeholder="TX" {...field} /></FormControl>
+                          <FormControl><Input placeholder="CA" {...field} /></FormControl>
                           <FormMessage />
                         </FormItem>
                       )} />

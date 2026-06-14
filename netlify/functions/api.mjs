@@ -52818,7 +52818,20 @@ if (!process.env.DATABASE_URL) {
     "[db] WARNING: DATABASE_URL is not set. Database queries will fail at runtime."
   );
 }
-var pool = new Pool3({ connectionString: process.env.DATABASE_URL });
+var connectionString = process.env.DATABASE_URL;
+var isRemote = !!connectionString && !connectionString.includes("localhost") && !connectionString.includes("127.0.0.1");
+var pool = new Pool3({
+  connectionString,
+  // Remote databases (Neon, Supabase, Railway) require SSL.
+  // rejectUnauthorized: false trusts the server certificate without a local CA
+  // bundle, which is required in some Lambda / Netlify Function environments.
+  ...isRemote ? { ssl: { rejectUnauthorized: false } } : {},
+  // Serverless-safe pool settings: keep only 1 connection per invocation,
+  // release it quickly so the function can exit cleanly.
+  max: 1,
+  connectionTimeoutMillis: 1e4,
+  idleTimeoutMillis: 3e4
+});
 var db = drizzle(pool, { schema: schema_exports });
 
 // ../../node_modules/.pnpm/zod@3.25.76/node_modules/zod/v3/helpers/util.js
