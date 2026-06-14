@@ -29,8 +29,8 @@ export default function Home() {
   const { data: listings } = useGetListings();
   const { data: soldListings } = useGetSoldListings();
 
-  const featuredListings = listings?.slice(0, 3) || [];
-  const recentSold = soldListings?.slice(0, 3) || [];
+  const featuredListings = Array.isArray(listings) ? listings.slice(0, 3) : [];
+  const recentSold = Array.isArray(soldListings) ? soldListings.slice(0, 3) : [];
 
   return (
     <Layout>

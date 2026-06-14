@@ -39,7 +39,7 @@ export default function RecentlySold() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[1, 2, 3].map(i => <div key={i} className="h-80 bg-secondary animate-pulse rounded-lg" />)}
             </div>
-          ) : listings && listings.length > 0 ? (
+          ) : Array.isArray(listings) && listings.length > 0 ? (
             <motion.div
               initial="hidden"
               animate="visible"

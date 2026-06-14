@@ -7,6 +7,15 @@
   BASE_PATH = "/"
   PORT = "3000"
 
+# API calls must 404 (no backend on Netlify) — must be declared BEFORE the SPA catch-all
+# so they don't get served index.html as a 200, which breaks customFetch parsing
+[[redirects]]
+  from = "/api/*"
+  to = "/index.html"
+  status = 404
+  force = true
+
+# SPA catch-all: every non-asset path serves index.html so client-side routing works
 [[redirects]]
   from = "/*"
   to = "/index.html"

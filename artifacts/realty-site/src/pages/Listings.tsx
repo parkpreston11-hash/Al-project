@@ -42,7 +42,7 @@ export default function Listings() {
                 <div key={i} className="h-96 bg-secondary animate-pulse rounded-lg" />
               ))}
             </div>
-          ) : listings && listings.length > 0 ? (
+          ) : Array.isArray(listings) && listings.length > 0 ? (
             <motion.div
               initial="hidden"
               animate="visible"
