@@ -56881,8 +56881,8 @@ var insertLeadSchema = createInsertSchema(leadsTable).omit({ id: true, createdAt
 // ../../lib/db/src/index.ts
 var { Pool: Pool3 } = esm_default;
 if (!process.env.DATABASE_URL) {
-  throw new Error(
-    "DATABASE_URL must be set. Did you forget to provision a database?"
+  console.warn(
+    "[db] WARNING: DATABASE_URL is not set. Database queries will fail at runtime."
   );
 }
 var pool = new Pool3({ connectionString: process.env.DATABASE_URL });
@@ -57210,6 +57210,11 @@ app.use((0, import_cors.default)());
 app.use(import_express6.default.json());
 app.use(import_express6.default.urlencoded({ extended: true }));
 app.use("/api", routes_default);
+app.use((err, _req, res, _next) => {
+  const message = err instanceof Error ? err.message : "Internal server error";
+  logger.error({ err }, "Unhandled error");
+  res.status(500).json({ error: message });
+});
 var app_default = app;
 
 // src/netlify-handler.ts

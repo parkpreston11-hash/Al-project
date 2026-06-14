@@ -30,6 +30,7 @@ type FormValues = z.infer<typeof schema>;
 
 export default function HomeBuyingPlan() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const submitLead = useSubmitBuyerPlanLead();
 
   const form = useForm<FormValues>({
@@ -41,8 +42,10 @@ export default function HomeBuyingPlan() {
   });
 
   function onSubmit(values: FormValues) {
+    setSubmitError(null);
     submitLead.mutate({ data: values }, {
       onSuccess: () => setSubmitted(true),
+      onError: () => setSubmitError("Something went wrong. Please try again or call (626) 391-1342 directly."),
     });
   }
 
@@ -225,6 +228,9 @@ export default function HomeBuyingPlan() {
                   )} />
 
                   <div className="pt-2">
+                    {submitError && (
+                      <p className="text-red-500 text-sm text-center mb-3" data-testid="plan-error">{submitError}</p>
+                    )}
                     <Button type="submit" size="lg" className="w-full" disabled={submitLead.isPending} data-testid="button-submit-plan">
                       {submitLead.isPending ? "Sending..." : "Start My Home Buying Plan"}
                     </Button>

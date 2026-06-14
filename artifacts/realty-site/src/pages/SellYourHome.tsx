@@ -29,6 +29,7 @@ const stagger = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { s
 
 export default function SellYourHome() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const submitLead = useSubmitSellerLead();
 
   const form = useForm<FormValues>({
@@ -37,8 +38,10 @@ export default function SellYourHome() {
   });
 
   function onSubmit(values: FormValues) {
+    setSubmitError(null);
     submitLead.mutate({ data: values }, {
       onSuccess: () => setSubmitted(true),
+      onError: () => setSubmitError("Something went wrong. Please try again or call (626) 391-1342 directly."),
     });
   }
 
@@ -169,6 +172,9 @@ export default function SellYourHome() {
                       <FormMessage />
                     </FormItem>
                   )} />
+                  {submitError && (
+                    <p className="text-red-500 text-sm text-center" data-testid="sell-error">{submitError}</p>
+                  )}
                   <Button type="submit" size="lg" className="w-full" disabled={submitLead.isPending} data-testid="button-submit-seller">
                     {submitLead.isPending ? "Sending..." : "Request My Home Value"}
                   </Button>
