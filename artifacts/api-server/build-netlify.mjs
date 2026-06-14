@@ -19,9 +19,17 @@ async function buildNetlifyFn() {
     format: "esm",
     outfile: path.resolve(outDir, "api.mjs"),
     logLevel: "info",
+    // Replace process.env.NODE_ENV at build time so esbuild can tree-shake
+    // the pino-pretty transport branch entirely from the bundle.
+    // pino-pretty uses worker threads which cannot be bundled or run in
+    // Netlify's serverless environment.
+    define: {
+      "process.env.NODE_ENV": '"production"',
+    },
     // Same external list as build.mjs — pg-native is optional and handled by pg's try/catch
     external: [
       "*.node",
+      "pino-pretty",
       "sharp",
       "better-sqlite3",
       "sqlite3",
