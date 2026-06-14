@@ -1,21 +1,27 @@
 [build]
-  command = "pnpm install && pnpm --filter @workspace/realty-site run build"
+  command = "pnpm install && pnpm --filter @workspace/realty-site run build && pnpm --filter @workspace/api-server run build:netlify"
   publish = "artifacts/realty-site/dist/public"
 
 [build.environment]
   NODE_VERSION = "20"
   BASE_PATH = "/"
   PORT = "3000"
+  NODE_ENV = "production"
 
-# API calls must 404 (no backend on Netlify) — must be declared BEFORE the SPA catch-all
-# so they don't get served index.html as a 200, which breaks customFetch parsing
+# Pre-built functions — esbuild bundles them during the build command above.
+# node_bundler = "none" tells Netlify to deploy the .mjs files as-is (no re-bundling).
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "none"
+
+# Route all /api/* traffic to the Netlify Function (runs the full Express app)
 [[redirects]]
   from = "/api/*"
-  to = "/index.html"
-  status = 404
+  to = "/.netlify/functions/api"
+  status = 200
   force = true
 
-# SPA catch-all: every non-asset path serves index.html so client-side routing works
+# SPA catch-all — must come AFTER the /api/* rule
 [[redirects]]
   from = "/*"
   to = "/index.html"
