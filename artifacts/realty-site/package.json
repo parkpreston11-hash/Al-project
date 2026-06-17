@@ -72,9 +72,8 @@
     "vaul": "^1.1.2",
     "vite": "catalog:",
     "wouter": "^3.3.5",
-    "zod": "catalog:"
-  },
-  "dependencies": {
+    "zod": "catalog:",
     "react-helmet-async": "^3.0.0"
-  }
+  },
+  "dependencies": {}
 }
