@@ -156,10 +156,6 @@ overrides:
 importers:
 
   .:
-    dependencies:
-      serverless-http:
-        specifier: ^4.0.0
-        version: 4.0.0
     devDependencies:
       prettier:
         specifier: ^3.8.3
@@ -407,10 +403,6 @@ importers:
         version: 3.25.76
 
   artifacts/realty-site:
-    dependencies:
-      react-helmet-async:
-        specifier: ^3.0.0
-        version: 3.0.0(react@19.1.0)
     devDependencies:
       '@hookform/resolvers':
         specifier: ^3.10.0
@@ -565,6 +557,9 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.1.0(react@19.1.0)
+      react-helmet-async:
+        specifier: ^3.0.0
+        version: 3.0.0(react@19.1.0)
       react-hook-form:
         specifier: ^7.55.0
         version: 7.75.0(react@19.1.0)
