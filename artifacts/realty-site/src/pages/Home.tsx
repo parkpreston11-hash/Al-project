@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
+import { agentSchema, homeFaqSchema } from "@/lib/schemas";
 import { useGetListings, useGetSoldListings } from "@workspace/api-client-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -34,6 +36,12 @@ export default function Home() {
 
   return (
     <Layout>
+      <SEO
+        title="Go Big Al Williams | Realtor &amp; Loan Officer — Southern California"
+        description="Find homes for sale in Corona, Chino, Riverside &amp; Inland Empire with Al Williams — licensed Realtor (DRE #01461081) and Loan Officer (NMLS #271420). Buy, sell, and finance with one trusted advisor. Call (626) 391-1342."
+        canonical="/"
+        structuredData={[agentSchema, homeFaqSchema]}
+      />
       {/* Hero */}
       <section className="relative h-[92vh] min-h-[640px] flex items-center justify-center pt-20 overflow-hidden">
         <div className="absolute inset-0 z-0">

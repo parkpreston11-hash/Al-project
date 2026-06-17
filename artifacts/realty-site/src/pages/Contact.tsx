@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
+import { agentSchema } from "@/lib/schemas";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Phone, MapPin, Clock, Facebook, Instagram, Linkedin } from "lucide-react";
@@ -11,6 +13,12 @@ const stagger = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { s
 export default function Contact() {
   return (
     <Layout>
+      <SEO
+        title="Contact Al Williams | Realtor &amp; Loan Officer | (626) 391-1342"
+        description="Contact Al Williams, your Southern California Realtor &amp; Loan Officer. Call (626) 391-1342 or visit our office at 17220 Newhope St, Fountain Valley, CA. Serving the Inland Empire and greater LA area."
+        canonical="/contact"
+        structuredData={[agentSchema]}
+      />
       <section className="bg-primary pt-32 pb-16">
         <div className="container mx-auto px-4 md:px-6">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-2">Reach Out</p>

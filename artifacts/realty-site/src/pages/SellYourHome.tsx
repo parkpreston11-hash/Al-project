@@ -5,6 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { SEO } from "@/components/SEO";
+import { agentSchema, sellFaqSchema } from "@/lib/schemas";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -47,6 +49,12 @@ export default function SellYourHome() {
 
   return (
     <Layout>
+      <SEO
+        title="Sell My Home in Southern California | Free Home Valuation | Go Big Al Williams"
+        description="Ready to sell your home in Southern California? Get a free home valuation from Al Williams, licensed Realtor (DRE #01461081). Serving Corona, Chino, Riverside, Rancho Cucamonga &amp; Inland Empire. Call (626) 391-1342."
+        canonical="/sell"
+        structuredData={[agentSchema, sellFaqSchema]}
+      />
       <section className="bg-primary pt-32 pb-16">
         <div className="container mx-auto px-4 md:px-6">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-2">Seller Services</p>

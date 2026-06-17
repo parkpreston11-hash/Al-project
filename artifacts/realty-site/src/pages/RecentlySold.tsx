@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
+import { agentSchema, buildSoldItemListSchema } from "@/lib/schemas";
 import { useGetSoldListings } from "@workspace/api-client-react";
 import { Bed, Bath, Square, MapPin } from "lucide-react";
 
@@ -23,8 +25,16 @@ const fadeUp = {
 export default function RecentlySold() {
   const { data: listings, isLoading } = useGetSoldListings();
 
+  const soldData = Array.isArray(listings) ? listings : [];
+
   return (
     <Layout>
+      <SEO
+        title="Recently Sold Homes in Southern California | Go Big Al Williams"
+        description="See recently sold homes by Al Williams across Southern California and the Inland Empire. 55+ transactions closed. Licensed Realtor (DRE #01461081) &amp; Loan Officer (NMLS #271420). Call (626) 391-1342."
+        canonical="/sold"
+        structuredData={[agentSchema, ...(soldData.length > 0 ? [buildSoldItemListSchema(soldData)] : [])]}
+      />
       <section className="bg-primary pt-32 pb-16">
         <div className="container mx-auto px-4 md:px-6">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-2">Proven Track Record</p>

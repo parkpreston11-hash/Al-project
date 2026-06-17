@@ -5,6 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { SEO } from "@/components/SEO";
+import { agentSchema, buyerFaqSchema } from "@/lib/schemas";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -51,6 +53,12 @@ export default function HomeBuyingPlan() {
 
   return (
     <Layout>
+      <SEO
+        title="First Time Home Buyer Plan — Southern California | Go Big Al Williams"
+        description="Start your home buying journey with a personalized plan from Al Williams — licensed Realtor &amp; Loan Officer serving Southern California. First-time buyer programs, FHA loans, and down payment assistance available. Call (626) 391-1342."
+        canonical="/home-buying-plan"
+        structuredData={[agentSchema, buyerFaqSchema]}
+      />
       <section className="bg-primary pt-32 pb-16">
         <div className="container mx-auto px-4 md:px-6">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-2">Get Started</p>

@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
+import { agentSchema } from "@/lib/schemas";
 import { Link } from "wouter";
 import { Calculator, DollarSign } from "lucide-react";
 
@@ -44,6 +46,12 @@ export default function MortgageCalculator() {
 
   return (
     <Layout>
+      <SEO
+        title="Mortgage Payment Calculator — Southern California | Go Big Al Williams"
+        description="Estimate your monthly mortgage payment instantly with our free calculator. Get pre-approved with Al Williams, licensed Loan Officer (NMLS #271420) serving Southern California. Call (626) 391-1342."
+        canonical="/calculator"
+        structuredData={[agentSchema]}
+      />
       <section className="bg-primary pt-32 pb-16">
         <div className="container mx-auto px-4 md:px-6">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-2">Planning Tool</p>

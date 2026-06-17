@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
+import { agentSchema, buildListingSchema } from "@/lib/schemas";
 import { useGetListingById, getGetListingByIdQueryKey } from "@workspace/api-client-react";
 import { Bed, Bath, Square, MapPin, CheckCircle, Phone, ChevronLeft, ChevronRight, X } from "lucide-react";
 
@@ -60,6 +62,27 @@ export default function PropertyDetails() {
 
   return (
     <Layout>
+      <SEO
+        title={`${listing.address}, ${listing.city} ${listing.state} | Go Big Al Williams`}
+        description={`${listing.status === "active" ? "For Sale" : "Recently Sold"}: ${listing.address}, ${listing.city}, ${listing.state} ${listing.zip} — ${listing.beds} bed, ${listing.baths} bath, ${listing.sqft.toLocaleString()} sq ft. Listed at $${listing.price.toLocaleString()}. Contact Al Williams at (626) 391-1342.`}
+        canonical={`/listings/${listing.id}`}
+        ogImage={listing.imageUrl}
+        ogType="article"
+        structuredData={[agentSchema, buildListingSchema({
+          id: listing.id,
+          address: listing.address,
+          city: listing.city,
+          state: listing.state,
+          zip: listing.zip,
+          price: listing.price,
+          beds: listing.beds,
+          baths: listing.baths,
+          sqft: listing.sqft,
+          description: listing.description || `${listing.beds} bed, ${listing.baths} bath home in ${listing.city}, ${listing.state}`,
+          imageUrl: listing.imageUrl,
+          status: listing.status,
+        })]}
+      />
       <div className="pt-24 pb-16 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           {/* Breadcrumb */}

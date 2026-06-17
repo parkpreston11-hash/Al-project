@@ -3,6 +3,8 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
+import { agentSchema, loanFaqSchema } from "@/lib/schemas";
 import { Shield, Home, Star, TrendingUp, RefreshCw, Building2 } from "lucide-react";
 
 const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
@@ -56,6 +58,12 @@ const loanPrograms = [
 export default function LoanOfficer() {
   return (
     <Layout>
+      <SEO
+        title="Home Loan Programs in Southern California | FHA, VA, Conventional | Go Big Al Williams"
+        description="Explore FHA, VA, conventional, and jumbo loan programs with Al Williams, licensed Loan Officer (NMLS #271420) serving Southern California and the Inland Empire. Low down payment options available. Call (626) 391-1342."
+        canonical="/loans"
+        structuredData={[agentSchema, loanFaqSchema]}
+      />
       <section className="bg-primary pt-32 pb-16">
         <div className="container mx-auto px-4 md:px-6">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-2">Financing Guidance</p>

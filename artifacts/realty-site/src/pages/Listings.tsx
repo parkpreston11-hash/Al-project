@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
+import { agentSchema, buildListingsItemListSchema } from "@/lib/schemas";
 import { useGetListings } from "@workspace/api-client-react";
 import { MapPin, Bed, Bath, Square } from "lucide-react";
 
@@ -23,8 +25,16 @@ const fadeUp = {
 export default function Listings() {
   const { data: listings, isLoading } = useGetListings();
 
+  const listingsData = Array.isArray(listings) ? listings : [];
+
   return (
     <Layout>
+      <SEO
+        title="Homes For Sale in Southern California | Go Big Al Williams"
+        description="Browse active property listings in Corona, Chino, Riverside, Rancho Cucamonga &amp; across the Inland Empire. Al Williams — licensed Realtor (DRE #01461081) and Loan Officer (NMLS #271420). Call (626) 391-1342."
+        canonical="/listings"
+        structuredData={[agentSchema, ...(listingsData.length > 0 ? [buildListingsItemListSchema(listingsData)] : [])]}
+      />
       {/* Page Header */}
       <section className="bg-primary pt-32 pb-16">
         <div className="container mx-auto px-4 md:px-6">

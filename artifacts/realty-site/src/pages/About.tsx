@@ -3,6 +3,8 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
+import { agentSchema } from "@/lib/schemas";
 import { MapPin, Award, Home, DollarSign, CheckCircle } from "lucide-react";
 
 const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
@@ -11,6 +13,12 @@ const stagger = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { s
 export default function About() {
   return (
     <Layout>
+      <SEO
+        title="About Al Williams | Realtor &amp; Loan Officer — Southern California"
+        description="Al Williams is a dual-licensed Realtor (DRE #01461081) and Loan Officer (NMLS #271420) with 55+ homes sold across Southern California and the Inland Empire. One advisor for buying, selling, and financing."
+        canonical="/about"
+        structuredData={[agentSchema]}
+      />
       <section className="bg-primary pt-32 pb-16">
         <div className="container mx-auto px-4 md:px-6">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-2">The Person Behind the Work</p>
